@@ -1,0 +1,89 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<!-- Start of breadcrumb section
+	============================================= -->
+<section id="breadcrumb" class="breadcrumb-section position-relative" data-background="{% static 'assets/img/background/bcbg.jpg' %}">
+    <div class="background_overlay"></div>
+    <div class="container">
+        <div class="breadcrumb-content headline">
+            <h2 class="breadcrumb-title"> About us</h2>
+            <div class="breadcrumb_item ul-li">
+                <ul class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="#">Home</a></li>
+                    <li class="breadcrumb-item active">About us</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End of breadcrumb section
+	============================================= -->
+
+<!-- Start of about section
+	============================================= -->
+<section id="about" class="about-section about-page-about">
+    <div class="container">
+        <div class="about-content">
+            <div class="row">
+                <div class="col-lg-6 col-md-12">
+                    <div class="about-text">
+                        <div class="section-title-left">
+                            <span class="title-tag"><img src="{% static 'assets/icon/icon5.svg' %}" alt="">Who We Are</span>
+                            <h2>About</h2>
+                        </div>
+                        <!-- title -->
+                        <div class="about-content pera-content">
+                            <div class="about-text1">
+                                <p>
+                                    With the advent of the China National Sword policy, opportunities to send mixed
+                                    plastics overseas for processing have diminished. However there is very little local
+                                    capacity in NSW and within Australia to sort recovered plastics into different
+                                    types, and convert them into valuable products, reducing the amount of plastics in
+                                    landfill and filling a gap in local processing capacity.
+                                </p>
+                            </div>
+                            <div class="about-text2">
+                                <p>
+                                    To help address this situation, Plasrefine Recycling Pty Ltd proposes to build a
+                                    waste plastics sorting and plastics recycling facility at Moss Vale to convert mixed
+                                    plastics to plastic flakes and pellets and to produce resins and other more advanced
+                                    products. The facility would have an ultimate capacity to receive and process up to
+                                    120,000 tpa of mixed plastics.
+                                </p>
+                            </div>
+                            <!--                            <div class="about-btn text-uppercase">-->
+                            <!--                                <a href="#">-->
+                            <!--                                    <i class="fas fa-play-circle"></i>-->
+                            <!--                                    <span>how we generate energy</span>-->
+                            <!--                                </a>-->
+                            <!--                            </div>-->
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-12" style="margin-bottom: 20px;">
+                    <div class="about-img clearfix">
+                        <img src="{% static 'assets/img/about/ab1.jpg' %}" style="padding: 10px;">
+                        <img src="{% static 'assets/img/about/ab2.jpg' %}" style="padding: 10px;">
+                    </div>
+                </div>
+
+                <div class="col-lg-12 col-md-12">
+                    <div class="section-title-left">
+                        <span class="title-tag"><img src="{% static 'assets/icon/icon5.svg' %}" alt="">Where We Are</span>
+                        <h2>Our location</h2>
+                    </div>
+
+                    <div class="about-img clearfix">
+                        <img src="{% static 'assets/img/contact/11.jpg' %}" style="padding: 10px;">
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End of about section
+	============================================= -->
+{% endblock content %}
