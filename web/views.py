@@ -1,9 +1,27 @@
 from django.shortcuts import render
+from web.models import Blog, Image_list, IndexPage, AboutPage, TechnologyPage, ProductsPage, ContactPage
+from functools import wraps
+import functools
+
+
+def use_logging(func):
+    @functools.wraps(func)
+    def _deco(*args, **kwargs):
+        print("%s is running" % func.__name__)
+        func(*args, **kwargs)
+
+    return _deco
+
+
+def get_4new_list():
+    news4 = Blog.objects.all()[:4]
+    return news4
 
 
 # Create your views here.
 def home(request):
-    return render(request, 'index.html')
+    images = IndexPage.objects.all()
+    return render(request, 'index.html', {"images": images})
 
 
 def service(request):
@@ -11,105 +29,35 @@ def service(request):
 
 
 def technology(request):
-    return render(request, 'technology.html')
+    data = TechnologyPage.objects.first()
+    print(data.title)
+    print(data.list.all())
+    return render(request, 'technology.html', {"data": data})
 
 
 def about(request):
-    return render(request, 'about.html')
+    data = AboutPage.objects.first()
+    return render(request, 'about.html', {"data": data})
 
 
 def products(request):
-    return render(request, 'products.html')
+    data = ProductsPage.objects.first()
+    return render(request, 'products.html', {"data": data})
 
 
 def contact(request):
-    return render(request, 'contact.html')
+    data = ContactPage.objects.first()
+    return render(request, 'contact.html', {"data": data})
 
 
 def news(request):
-    # data = Blog.objects.all()
-    return render(request, 'news.html')
+    data = Blog.objects.order_by('-id')
+    return render(request, 'news.html', {"data": data, })
 
 
 def news_detail(request, blog_id=None):
     data = None
-    # if blog_id:
-    #     data = Blog.objects.filter(id=blog_id)
-    return render(request, 'web/news_detail.html', {"data": data})
-
-
-def gallery(request):
-    return render(request, 'web/gallery.html')
-
-
-def hongna(request):
-    return render(request, 'web/hongna.html')
-
-
-def hongna_cn(request):
-    return render(request, 'web_cn/hongna.html')
-
-
-def hongda(request):
-    return render(request, 'web/hongda.html')
-
-
-def hongda_cn(request):
-    return render(request, 'web_cn/hongda.html')
-
-
-#  cn
-def home_cn(request):
-    return render(request, 'web_cn/index.html')
-
-
-def advance_aerogel_cn(request):
-    return render(request, 'web_cn/advance_aerogel.html')
-
-
-def advance_aerogel_grow_cn(request):
-    return render(request, 'web_cn/advance_aerogel_grow.html')
-
-
-def advance_aerogel(request):
-    return render(request, 'web/advance_aerogel.html')
-
-
-def aerogels_we_provide_cn(request):
-    return render(request, 'web_cn/aerogels_we_provide.html')
-
-
-def aerogels_we_provide(request):
-    return render(request, 'web/aerogels_we_provide.html')
-
-
-def advance_aerogel_grow(request):
-    return render(request, 'web/advance_aerogel_grow.html')
-
-
-def service_cn(request):
-    return render(request, 'web_cn/services.html')
-
-
-def about_cn(request):
-    return render(request, 'web_cn/about.html')
-
-
-def contact_cn(request):
-    return render(request, 'web_cn/contact.html')
-
-
-def news_cn(request):
-    data = Blog.objects.all()
-    return render(request, 'web_cn/typo.html', {"data": data})
-
-
-def news_detail_cn(request, blog_id=None):
-    data = None
     if blog_id:
-        data = Blog.objects.filter(id=blog_id)
-    return render(request, 'web_cn/news_detail.html', {"data": data})
-
-
-def gallery_cn(request):
-    return render(request, 'web_cn/gallery.html')
+        data = Blog.objects.filter(id=blog_id).first()
+        print(data)
+    return render(request, 'detail.html', {"blog": data})

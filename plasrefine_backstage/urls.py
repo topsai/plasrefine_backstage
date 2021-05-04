@@ -17,7 +17,8 @@ from django.contrib import admin
 from django.urls import path, include, re_path
 from django.views.static import serve
 from web import views
-from plasrefine_backstage import settings
+from django.conf import settings
+# from plasrefine_backstage import settings
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -29,7 +30,8 @@ urlpatterns = [
     path('contact/', views.contact, name='contact'),
     path('news/', views.news, name='news'),
     path('news/detail/<int:blog_id>/', views.news_detail, name='news_detail'),
-    path('gallery/', views.gallery, name='gallery'),
+    # path('gallery/', views.gallery, name='gallery'),
     re_path(r'media/(?P<path>.*)$', serve, {'document_root': settings.MEDIA_ROOT}),
+    path('ckeditor/', include('ckeditor_uploader.urls')),
 
 ]

@@ -2,38 +2,54 @@
 {% load static %}
 {% block content %}
     <section id="slider-eltron" class="slider-section slider-style-one">
-    <div id="slider-main" class="slider-content owl-carousel">
-        <div class="main-slider-img-text slide-type-one pera-content headline position-relative">
-            <div class="slider-img-bg img-zooming" data-background="{% static 'assets/img/slider/sm1.jpg' %}"></div>
-            <div class="background_overlay"></div>
-            <div class="container">
-                <div class="slider-content-box">
-                    <h1>Limited resources, infinite recycling
-                    </h1>
-                    <p>Turning trash into treasure starting from me.
-                    </p>
+        <div id="slider-main" class="slider-content owl-carousel">
+            {% for i in images %}
+                <div class="main-slider-img-text slide-type-one pera-content headline position-relative">
+                <div class="slider-img-bg img-zooming" data-background="/media/{{ i.img}}"></div>
+                <div class="background_overlay"></div>
+                <div class="container">
+                    <div class="slider-content-box">
+                        <h1>{{ i.title}}
+                        </h1>
+                        <p>{{ i.contents}}
+                        </p>
+                        <a href="/media/{{ i.img}}">asdasd
+                        </a>
+                    </div>
                 </div>
             </div>
+            {% endfor %}
+{#            <div class="main-slider-img-text slide-type-one pera-content headline position-relative">#}
+{#                <div class="slider-img-bg img-zooming" data-background="{% static 'assets/img/slider/sm1.jpg' %}"></div>#}
+{#                <div class="background_overlay"></div>#}
+{#                <div class="container">#}
+{#                    <div class="slider-content-box">#}
+{#                        <h1>Limited resources, infinite recycling#}
+{#                        </h1>#}
+{#                        <p>Turning trash into treasure starting from me.#}
+{#                        </p>#}
+{#                    </div>#}
+{#                </div>#}
+{#            </div>#}
+{#            <div class="main-slider-img-text slide-type-two pera-content headline position-relative">#}
+{#                <div class="slider-img-bg img-zooming" data-background="{% static 'assets/img/slider/sm2.jpg' %}"></div>#}
+{#                <div class="background_overlay"></div>#}
+{#                <div class="container">#}
+{#                    <div class="slider-content-box text-center">#}
+{#                        <h1>Limited resources, infinite recycling#}
+{##}
+{#                        </h1>#}
+{#                        <p>#}
+{#                            Turning trash into treasure starting from me.#}
+{##}
+{#                        </p>#}
+{#                        <!--                    <div class="slide-btn-1">-->#}
+{#                        <!--                        <a href="#">Learn More <i class="flaticon-next"></i></a>-->#}
+{#                        <!--                        <a href="#">Global help <i class="flaticon-next"></i></a>-->#}
+{#                        <!--                    </div>-->#}
+{#                    </div>#}
+{#                </div>#}
+{#            </div>#}
         </div>
-        <div class="main-slider-img-text slide-type-two pera-content headline position-relative">
-            <div class="slider-img-bg img-zooming" data-background="{% static 'assets/img/slider/sm2.jpg' %}"></div>
-            <div class="background_overlay"></div>
-            <div class="container">
-                <div class="slider-content-box text-center">
-                    <h1>Limited resources, infinite recycling
-
-                    </h1>
-                    <p>
-                        Turning trash into treasure starting from me.
-
-                    </p>
-                    <!--                    <div class="slide-btn-1">-->
-                    <!--                        <a href="#">Learn More <i class="flaticon-next"></i></a>-->
-                    <!--                        <a href="#">Global help <i class="flaticon-next"></i></a>-->
-                    <!--                    </div>-->
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+    </section>
 {% endblock content %}

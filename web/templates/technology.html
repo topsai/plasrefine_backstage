@@ -1,121 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Plasrefine</title>
-    <link rel="shortcut icon" href="assets/img/logo/ficon.png" type="image/x-icon">
-    <meta name="author" content="">
-    <meta name="description" content="">
-    <meta name="keywords"
-          content="	alternative energy, ecology, energy business, green energy, heating, hydropower, ">
-    <!-- Mobile Specific Meta -->
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
 
-    <link rel="stylesheet" href="assets/css/owl.carousel.css">
-    <link rel="stylesheet" href="assets/css/fontawesome-all.css">
-    <link rel="stylesheet" href="assets/css/simple-line-icons.css">
-    <link rel="stylesheet" href="assets/css/animate.css">
-    <link rel="stylesheet" href="assets/css/flaticon.css">
-    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
-    <link rel="stylesheet" href="assets/css/video.min.css">
-    <link rel="stylesheet" href="assets/css/lightbox.css">
-    <link rel="stylesheet" href="assets/css/style.css">
-</head>
-
-<body>
-
-<!-- Start of header section
+    <!-- Start of breadcrumb section
 	============================================= -->
-<header id="header_id" class="main_header header_style_one">
-    <div class="header_top">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="header_top_contact ul-li clearfix">
-                        <ul>
-                            <li><i class="icon-call-out"></i> 1800 810 680</li>
-                            <li><i class="icon-envelope-letter"></i> <a href="mailto:community.input@ghd.com">community.input@ghd.com</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-<!--                <div class="col-md-6">-->
-<!--                    <div class="header_top_info float-right">-->
-<!--                        <div class="top_info_item top_info_menu ul-li clearfix">-->
-<!--                        </div>-->
-<!--                        <div class="top_info_item top_info_social ul-li clearfix">-->
-<!--                            <ul>-->
-<!--                                <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>-->
-<!--                                <li><a href="#"><i class="fab fa-twitter"></i></a></li>-->
-<!--                                <li><a href="#"><i class="fab fa-google-plus-g"></i></a></li>-->
-<!--                                <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>-->
-<!--                                <li><a href="#"><i class="fab fa-vimeo-v"></i></a></li>-->
-<!--                            </ul>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                </div>-->
-            </div>
-        </div>
-    </div>
-    <div class="site-main-menu clearfix">
-        <div class="container">
-            <div class="brand-logo float-left">
-                <a href="index.html"><img src="assets/img/logo/logo1.png" alt=""></a>
-            </div>
-            <nav class="main_navigation desktop-menu ul-li">
-                <ul id="main-nav" class="navbar-nav text-uppercase clearfix">
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="about.html">About</a></li>
-                    <li><a href="technology.html">Technology</a></li>
-                    <li><a href="Products.html">Products</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                </ul>
-            </nav>
-        </div>
-    </div>
-    <!-- desktop-menu -->
-    <div class="el-mobile_menu relative-position">
-        <div class="el-mobile_menu_button s2-open_mobile_menu">
-            <i class="fas fa-bars"></i>
-        </div>
-        <div class="el-mobile_menu_wrap">
-            <div class="mobile_menu_overlay s2-open_mobile_menu"></div>
-            <div class="el-mobile_menu_content">
-                <div class="el-mobile_menu_close s2-open_mobile_menu">
-                    <i class="fas fa-arrow-circle-right"></i>
-                </div>
-                <div class="m-brand-logo text-center">
-                    <a href="#"><img src="assets/img/logo/logo1.png" alt=""></a>
-                </div>
-                <nav class="el-mobile-main-navigation  clearfix ul-li">
-                    <ul id="main-nav" class="navbar-nav text-capitalize clearfix">
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="about.html">About</a></li>
-                        <li><a href="technology.html">Technology</a></li>
-                        <li><a href="Products.html">Products</a></li>
-                        <li><a href="contact.html">Contact</a></li>
-                    </ul>
-                </nav>
-                <div class="mobile-contact-info text-center ul-li-block">
-                    <ul>
-                        <li><i class="icon-call-out"></i> 1800 810 680</li>
-                        <li><i class="icon-envelope-letter"></i>
-                            <a href="mailto:community.input@ghd.com">
-                                community.input@ghd.com
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-</header>
-<!-- End of header section
-	============================================= -->
-
-<!-- Start of breadcrumb section
-	============================================= -->
-<section id="breadcrumb" class="breadcrumb-section position-relative" data-background="assets/img/background/bcbg.jpg">
+<section id="breadcrumb" class="breadcrumb-section position-relative" data-background="{% static 'assets/img/background/bcbg.jpg' %}">
     <div class="background_overlay"></div>
     <div class="container">
         <div class="breadcrumb-content headline">
@@ -143,7 +32,7 @@
                     <div class="service-details-img-pair">
                         <div class="row">
                             <div class="col-md-12">
-                                <img src="assets/img/service/ser5.jpg" alt="">
+                                <img src="media/{{ data.img1 }}" alt="">
                             </div>
                         </div>
                     </div>
@@ -154,45 +43,35 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div class="service-details-list ul-li-block">
-                                <ul>
-                                    <li>- Polyethylene terephthalate (PET)</li>
-                                    <li>- High-density polyethylene (HDPE)</li>
-                                    <li>- Low-density polyethylene (LDPE)</li>
-                                    <li>- Polyvinyl chloride (PVC)</li>
-                                    <li>- Polypropylene (PP) and Polystyrene (PS)</li>
+                                <ul>{% for i in data.list.all %}
+                                        <li>{{ i }}</li>
+                                    {% endfor %}
+{#                                    <li>- Polyethylene terephthalate (PET)</li>#}
+{#                                    <li>- High-density polyethylene (HDPE)</li>#}
+{#                                    <li>- Low-density polyethylene (LDPE)</li>#}
+{#                                    <li>- Polyvinyl chloride (PVC)</li>#}
+{#                                    <li>- Polypropylene (PP) and Polystyrene (PS)</li>#}
                                 </ul>
                                 <article>
                                     <br/>
-                                    The project includes the construction and operation of a waste plastics sorting and
-                                    plastics recycling facility with operations across two buildings, plus a building
-                                    for receival of waste plastics.
+                                    {{ data.contents1 | safe }}
                                 </article>
 
                             </div>
                         </div>
                         <div class="col-md-6">
-                            <img src="assets/img/service/serd1.jpg" alt="">
+                            <img src="media/{{ data.img1 }}" alt="">
                         </div>
                     </div>
                     <article>
-                        In the first building, the facility would receive mixed plastics, remove unwanted materials such
-                        as glass pieces and caps and other recyclables, sterilise and deodorise the material using a
-                        patented disinfectant solution, and sort the material by plastic type using optical, smart arm
-                        methods. Some of the plastics would be heated to 90 to 100 degrees Celsius to remove labels and
-                        then either pelletised or shredded into flakes depending on the original plastic types.
-
-                    </article>
-                    <article>
-                        The pellets and flakes would be suitable for sale at this point or they could be transported to
-                        the second building to produce more advanced plastic products such as polyester fibre and
-                        resins, using leading edge, high technology processes.
+                        {{ data.contents2 | safe }}
                     </article>
                     <div class="service-single-icon-text">
                         <div class="site-info-icon-text position-relative">
-                            <img src="assets/img/service/ser1.jpg" alt="">
+                            <img src="media/{{ data.img2 }}" alt="">
                         </div>
                         <div class="site-info-icon-text position-relative">
-                            <img src="assets/img/service/ser2.jpg" alt="">
+                            <img src="media/{{ data.img3 }}" alt="">
                         </div>
                     </div>
 
@@ -204,81 +83,5 @@
 <!-- End of service single section
 	============================================= -->
 
-<!-- Start of Footer section
-	============================================= -->
-<footer id="footer-id" class="footer-section">
-    <div class="footer-content">
-        <div class="container">
-            <br/><br/>
-            <div class="footer-widget-area">
-                <div class="row">
 
-                    <div class="col-lg-6 col-md-6">
-                        <div class="footer-widget-item pera-content">
-                            <div class="footer-menu-widget ul-li-block">
-                                <h3 class="el-widget-title"><a href="news.html">Industry information</a></h3>
-                                <ul>
-                                    <li><a href="detail.html">2017-18 Australian Plastics Recycling Survey</a></li>
-                                    <li><a href="detail1.html">National Waste Report 2018</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <!--                    <div class="col-lg-3 col-md-6">-->
-                    <!--                        <div class="footer-widget-item pera-content">-->
-                    <!--                            <div class="footer-menu-widget ul-li-block">-->
-                    <!--                                <h3 class="el-widget-title"><a href="technology.html"></a></h3>-->
-                    <!--                            </div>-->
-                    <!--                        </div>-->
-                    <!--                    </div>-->
-                    <!--                    <div class="col-lg-3 col-md-6">-->
-                    <!--                        <div class="footer-widget-item pera-content">-->
-                    <!--                            <div class="footer-location-widget ul-li-block">-->
-                    <!--                                <h3 class="el-widget-title">Our Locations</h3>-->
-                    <!--                                <div class="loaction-select position-relative">-->
-                    <!--                                    <p>74-76 Beaconsfield Road，Moss Vale</p>-->
-                    <!--                                </div>-->
-                    <!--                                <div class="footer-map">-->
-
-                    <!--                                    <img style="height: 100%" src="assets/img/contact/1.jpg">-->
-                    <!--                                </div>-->
-                    <!--                            </div>-->
-                    <!--                        </div>-->
-                    <!--                    </div>-->
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="footer-copyright-text text-center">
-        <p>Copyright &copy; 2021.Haoming Partner All rights reserved.</p>
-        <!--        <div class="copyright-menu">-->
-        <!--            <a href="#">Terms</a>-->
-        <!--            <a href="#"> Privacy Policy </a>-->
-        <!--            <a href="#">Sitemap</a>-->
-        <!--        </div>-->
-    </div>
-</footer>
-<!-- End of Footer section
-	============================================= -->
-
-<!-- For Js Library -->
-<script src="assets/js/jquery.min.js"></script>
-<script src="assets/js/bootstrap.min.js"></script>
-<script src="assets/js/popper.min.js"></script>
-<script src="assets/js/owl.carousel.min.js"></script>
-<script src="assets/js/jarallax.js"></script>
-<script src="assets/js/jquery.magnific-popup.min.js"></script>
-<script src="assets/js/appear.js"></script>
-<script src="assets/js/isotope.pkgd.min.js"></script>
-<script src="assets/js/masonry.pkgd.min.js"></script>
-<script src="assets/js/imagesloaded.pkgd.min.js"></script>
-<script src="assets/js/lightbox.js"></script>
-<script src="assets/js/waypoints.min.js"></script>
-<script src="assets/js/jquery.counterup.min.js"></script>
-<script src="assets/js/tilt.jquery.min.js"></script>
-<script src="assets/js/wow.min.js"></script>
-<script src="assets/js/script.js"></script>
-<script src="assets/js/gmap3.min.js"></script>
-<script src="https://ditu.google.cn/maps/api/js?key=AIzaSyC61_QVqt9LAhwFdlQmsNwi5aUJy9B2SyA"></script>
-</body>
-</html>
+{% endblock content %}

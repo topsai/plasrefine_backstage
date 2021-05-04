@@ -1,9 +1,12 @@
 {% load static %}
+{% load index_tags %}
+{% get_news4_tag as news4 %}
+{% get_settings as settings %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Plasrefine</title>
+    <title>{{ settings.title }}</title>
     <link rel="shortcut icon" href="{% static 'assets/img/logo/ficon.png' %}" type="image/x-icon">
     <meta name="author" content="">
     <meta name="description" content="">
@@ -37,27 +40,13 @@
                 <div class="col-md-6">
                     <div class="header_top_contact ul-li clearfix">
                         <ul>
-                            <li><i class="icon-call-out"></i> 1800 810 680</li>
-                            <li><i class="icon-envelope-letter"></i> <a href="mailto:community.input@ghd.com">community.input@ghd.com</a>
+                            <li><i class="icon-call-out"></i>{{ settings.phone }}</li>
+                            <li><i class="icon-envelope-letter"></i> <a
+                                    href="mailto:{{ settings.email }}">{{ settings.email }}</a>
                             </li>
                         </ul>
                     </div>
                 </div>
-<!--                <div class="col-md-6">-->
-<!--                    <div class="header_top_info float-right">-->
-<!--                        <div class="top_info_item top_info_menu ul-li clearfix">-->
-<!--                        </div>-->
-<!--                        <div class="top_info_item top_info_social ul-li clearfix">-->
-<!--                            <ul>-->
-<!--                                <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>-->
-<!--                                <li><a href="#"><i class="fab fa-twitter"></i></a></li>-->
-<!--                                <li><a href="#"><i class="fab fa-google-plus-g"></i></a></li>-->
-<!--                                <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>-->
-<!--                                <li><a href="#"><i class="fab fa-vimeo-v"></i></a></li>-->
-<!--                            </ul>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                </div>-->
             </div>
         </div>
     </div>
@@ -102,10 +91,10 @@
                 </nav>
                 <div class="mobile-contact-info text-center ul-li-block">
                     <ul>
-                        <li><i class="icon-call-out"></i> 1800 810 680</li>
+                        <li><i class="icon-call-out"></i>{{ settings.phone }}</li>
                         <li><i class="icon-envelope-letter"></i>
-                            <a href="mailto:community.input@ghd.com">
-                                community.input@ghd.com
+                            <a href="mailto:{{ settings.email }}">
+                                {{ settings.email }}
                             </a>
                         </li>
                     </ul>
@@ -141,33 +130,20 @@
                             <div class="footer-menu-widget ul-li-block">
                                 <h3 class="el-widget-title"><a href="/news/">Industry information</a></h3>
                                 <ul>
-                                    <li><a href="detail.html">2017-18 Australian Plastics Recycling Survey</a></li>
-                                    <li><a href="detail1.html">National Waste Report 2018</a></li>
+                                    {% if news4.count < 4 %}
+                                        <li><a href="detail.html">2017-18 Australian Plastics Recycling Survey</a></li>
+                                    {% endif %}
+                                    {% if news4.count < 3 %}
+                                        <li><a href="detail1.html">National Waste Report 2018</a></li>
+                                    {% endif %}
+                                    {% for i in news4 %}
+                                        <li><a href="/news/detail/{{ i.id }}">{{ i.title }}</a></li>
+                                    {% endfor %}
+
                                 </ul>
                             </div>
                         </div>
                     </div>
-                    <!--                    <div class="col-lg-3 col-md-6">-->
-                    <!--                        <div class="footer-widget-item pera-content">-->
-                    <!--                            <div class="footer-menu-widget ul-li-block">-->
-                    <!--                                <h3 class="el-widget-title"><a href="/technology/"></a></h3>-->
-                    <!--                            </div>-->
-                    <!--                        </div>-->
-                    <!--                    </div>-->
-                    <!--                    <div class="col-lg-3 col-md-6">-->
-                    <!--                        <div class="footer-widget-item pera-content">-->
-                    <!--                            <div class="footer-location-widget ul-li-block">-->
-                    <!--                                <h3 class="el-widget-title">Our Locations</h3>-->
-                    <!--                                <div class="loaction-select position-relative">-->
-                    <!--                                    <p>74-76 Beaconsfield Road，Moss Vale</p>-->
-                    <!--                                </div>-->
-                    <!--                                <div class="footer-map">-->
-
-                    <!--                                    <img style="height: 100%" src="assets/img/contact/1.jpg">-->
-                    <!--                                </div>-->
-                    <!--                            </div>-->
-                    <!--                        </div>-->
-                    <!--                    </div>-->
                 </div>
             </div>
         </div>
