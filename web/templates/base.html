@@ -53,7 +53,7 @@
     <div class="site-main-menu clearfix">
         <div class="container">
             <div class="brand-logo float-left">
-                <a href="/"><img src="{% static 'assets/img/logo/logo1.png' %}" alt=""></a>
+                <a href="/"><img src="/media/{{ settings.logo }}" alt=""></a>
             </div>
             <nav class="main_navigation desktop-menu ul-li">
                 <ul id="main-nav" class="navbar-nav text-uppercase clearfix">
@@ -61,6 +61,7 @@
                     <li><a href="/about/">About</a></li>
                     <li><a href="/technology/">Technology</a></li>
                     <li><a href="/products/">Products</a></li>
+                    <li><a href="/news/">COMMUNITY/FAQS</a></li>
                     <li><a href="/contact/">Contact</a></li>
                 </ul>
             </nav>
@@ -78,7 +79,7 @@
                     <i class="fas fa-arrow-circle-right"></i>
                 </div>
                 <div class="m-brand-logo text-center">
-                    <a href="#"><img src="{% static 'assets/img/logo/logo1.png' %}" alt=""></a>
+                    <a href="#"><img src="/media/{{ settings.logo }}" alt=""></a>
                 </div>
                 <nav class="el-mobile-main-navigation  clearfix ul-li">
                     <ul id="main-nav" class="navbar-nav text-capitalize clearfix">
@@ -86,6 +87,7 @@
                         <li><a href="/about/">About</a></li>
                         <li><a href="/technology/">Technology</a></li>
                         <li><a href="/products/">Products</a></li>
+                        <li><a href="/news/">COMMUNITY/FAQS</a></li>
                         <li><a href="/contact/">Contact</a></li>
                     </ul>
                 </nav>
@@ -130,12 +132,12 @@
                             <div class="footer-menu-widget ul-li-block">
                                 <h3 class="el-widget-title"><a href="/news/">Industry information</a></h3>
                                 <ul>
-                                    {% if news4.count < 4 %}
-                                        <li><a href="detail.html">2017-18 Australian Plastics Recycling Survey</a></li>
-                                    {% endif %}
-                                    {% if news4.count < 3 %}
-                                        <li><a href="detail1.html">National Waste Report 2018</a></li>
-                                    {% endif %}
+{#                                    {% if news4.count < 4 %}#}
+{#                                        <li><a href="detail.html">2017-18 Australian Plastics Recycling Survey</a></li>#}
+{#                                    {% endif %}#}
+{#                                    {% if news4.count < 3 %}#}
+{#                                        <li><a href="detail1.html">National Waste Report 2018</a></li>#}
+{#                                    {% endif %}#}
                                     {% for i in news4 %}
                                         <li><a href="/news/detail/{{ i.id }}">{{ i.title }}</a></li>
                                     {% endfor %}

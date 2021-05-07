@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 
 from pathlib import Path
 import os
+import platform
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -23,9 +24,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-96jm%zanod*w!47sohk0=ow^&rivy&w&ebr-(rngb&v-+zi!dr'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
+# 开发时开启 DEBUG 模式
+if platform.system() == 'Windows':
+    DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 # Application definition
 
@@ -104,9 +108,10 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/3.2/topics/i18n/
 
-LANGUAGE_CODE = 'zh-Hans'
+# LANGUAGE_CODE = 'zh-Hans'
+LANGUAGE_CODE = 'en'
 
-TIME_ZONE = 'Asia/Chongqing'
+TIME_ZONE = 'UTC'
 
 USE_I18N = True
 
@@ -128,100 +133,100 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 CKEDITOR_UPLOAD_PATH = 'upload/'
 # 网站配置文件在数据库中的序号
-WEBSETTING_INDEX = 1
+WEBSETTING_INDEX = 2
 # ckeditor
-# CKEDITOR_CONFIGS = {
-#     'default': {
-#         # 使用简体中文
-#         # 'language': 'en',
-#         # 'skin': 'moono-lisa',
-#         'toolbar_Basic': [
-#             ['Source', '-', 'Bold', 'Italic']
-#         ],
-#         'toolbar_Full': [
-#             ['Source', '-', 'Save', 'NewPage', 'DocProps', 'Preview', 'Print', '-', 'Templates'],
-#             ['Cut', 'Copy', 'Paste', 'PasteText', 'PasteFromWord', '-', 'Undo', 'Redo'],
-#             ['Find', 'Replace', '-', 'SelectAll', '-', 'SpellChecker', 'Scayt'],
-#             ['Form', 'Checkbox', 'Radio', 'TextField', 'Textarea', 'Select', 'Button', 'ImageButton', 'HiddenField'],
-#             # '/',
-#             ['indentBlock', 'Image', 'Bold', 'Italic', 'Underline', 'Strike', 'Subscript', 'Superscript', '-',
-#              'RemoveFormat'],
-#             ['NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', 'Blockquote', 'CreateDiv', '-',
-#              'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock', '-', 'BidiLtr', 'BidiRtl'],
-#             ['Link', 'Unlink', 'Anchor'],
-#             ['Image', 'Flash', 'Table', 'HorizontalRule', 'Smiley', 'SpecialChar', 'PageBreak', 'Iframe'],
-#             # '/',
-#             ['Styles', 'Format', 'Font', 'FontSize'],
-#             ['Format', 'FontSize'],
-#             ['TextColor', 'BGColor'],
-#             ['Maximize', 'ShowBlocks', '-', 'About'],
-#         ],
-#         'toolbar': 'Full',
-#     }
-# }
-
 CKEDITOR_CONFIGS = {
     'default': {
-        'language': 'zh-cn',
-        'skin': 'moono',
-        # 'skin': 'office2013',
+        # 使用简体中文
+        # 'language': 'en',
+        # 'skin': 'moono-lisa',
         'toolbar_Basic': [
             ['Source', '-', 'Bold', 'Italic']
         ],
-        'toolbar_YourCustomToolbarConfig': [
-            {'name': 'document', 'items': ['Source', '-', 'Save', 'NewPage', 'Preview', 'Print', '-', 'Templates']},
-            {'name': 'clipboard', 'items': ['Cut', 'Copy', 'Paste', 'PasteText', 'PasteFromWord', '-', 'Undo', 'Redo']},
-            {'name': 'editing', 'items': ['Find', 'Replace', '-', 'SelectAll']},
-            {'name': 'forms',
-             'items': ['Form', 'Checkbox', 'Radio', 'TextField', 'Textarea', 'Select', 'Button', 'ImageButton',
-                       'HiddenField']},
-            '/',
-            {'name': 'basicstyles',
-             'items': ['Bold', 'Italic', 'Underline', 'Strike', 'Subscript', 'Superscript', '-', 'RemoveFormat']},
-            {'name': 'paragraph',
-             'items': ['NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', 'Blockquote', 'CreateDiv', '-',
-                       'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock', '-', 'BidiLtr', 'BidiRtl',
-                       'Language']},
-            {'name': 'links', 'items': ['Link', 'Unlink', 'Anchor']},
-            {'name': 'insert',
-             'items': ['Image', 'Flash', 'Table', 'HorizontalRule', 'Smiley', 'SpecialChar', 'PageBreak', 'Iframe']},
-            '/',
-            {'name': 'styles', 'items': ['Styles', 'Format', 'Font', 'FontSize']},
-            {'name': 'colors', 'items': ['TextColor', 'BGColor']},
-            {'name': 'tools', 'items': ['Maximize', 'ShowBlocks']},
-            {'name': 'about', 'items': ['About']},
-            '/',  # put this to force next toolbar on new line
-            {'name': 'yourcustomtools', 'items': [
-                # put the name of your editor.ui.addButton here
-                'Preview',
-                'Maximize',
-
-            ]},
+        'toolbar_Full': [
+            # ['Source', '-', 'Save', 'NewPage', 'DocProps', 'Preview', 'Print', '-', 'Templates'],
+            # ['Cut', 'Copy', 'Paste', 'PasteText', 'PasteFromWord', '-', 'Undo', 'Redo'],
+            # ['Find', 'Replace', '-', 'SelectAll', '-', 'SpellChecker', 'Scayt'],
+            # ['Form', 'Checkbox', 'Radio', 'TextField', 'Textarea', 'Select', 'Button', 'ImageButton', 'HiddenField'],
+            # '/',
+            ['indentBlock', 'Image', 'Bold', 'Italic', 'Underline', 'Strike', 'Subscript', 'Superscript', '-',
+             'RemoveFormat'],
+            ['NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', 'Blockquote', 'CreateDiv', '-',
+             'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock', '-', 'BidiLtr', 'BidiRtl'],
+            ['Link', 'Unlink', 'Anchor'],
+            # ['Image', 'Flash', 'Table', 'HorizontalRule', 'Smiley', 'SpecialChar', 'PageBreak', 'Iframe'],
+            # '/',
+            ['Styles', 'Format', 'Font'],
+            ['Format', 'FontSize'],
+            ['TextColor', 'BGColor'],
+            # ['Maximize', 'ShowBlocks', '-', 'About'],
         ],
-        'toolbar': 'YourCustomToolbarConfig',  # put selected toolbar config here
-        # 'toolbarGroups': [{ 'name': 'document', 'groups': [ 'mode', 'document', 'doctools' ] }],
-        # 'height': 291,
-        # 'width': '100%',
-        # 'filebrowserWindowHeight': 725,
-        # 'filebrowserWindowWidth': 940,
-        # 'toolbarCanCollapse': True,
-        # 'mathJaxLib': '//cdn.mathjax.org/mathjax/2.2-latest/MathJax.js?config=TeX-AMS_HTML',
-        'tabSpaces': 4,
-        'extraPlugins': ','.join([
-            'uploadimage',  # the upload image feature
-            # your extra plugins here
-            'div',
-            'autolink',
-            'autoembed',
-            'embedsemantic',
-            'autogrow',
-            # 'devtools',
-            'widget',
-            'lineutils',
-            'clipboard',
-            'dialog',
-            'dialogui',
-            'elementspath'
-        ]),
+        'toolbar': 'Full',
     }
 }
+
+# CKEDITOR_CONFIGS = {
+#     'default': {
+#         'language': 'zh-cn',
+#         'skin': 'moono',
+#         # 'skin': 'office2013',
+#         'toolbar_Basic': [
+#             ['Source', '-', 'Bold', 'Italic']
+#         ],
+#         'toolbar_YourCustomToolbarConfig': [
+#             {'name': 'document', 'items': ['Source', '-', 'Save', 'NewPage', 'Preview', 'Print', '-', 'Templates']},
+#             {'name': 'clipboard', 'items': ['Cut', 'Copy', 'Paste', 'PasteText', 'PasteFromWord', '-', 'Undo', 'Redo']},
+#             {'name': 'editing', 'items': ['Find', 'Replace', '-', 'SelectAll']},
+#             {'name': 'forms',
+#              'items': ['Form', 'Checkbox', 'Radio', 'TextField', 'Textarea', 'Select', 'Button', 'ImageButton',
+#                        'HiddenField']},
+#             '/',
+#             {'name': 'basicstyles',
+#              'items': ['Bold', 'Italic', 'Underline', 'Strike', 'Subscript', 'Superscript', '-', 'RemoveFormat']},
+#             {'name': 'paragraph',
+#              'items': ['NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', 'Blockquote', 'CreateDiv', '-',
+#                        'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock', '-', 'BidiLtr', 'BidiRtl',
+#                        'Language']},
+#             {'name': 'links', 'items': ['Link', 'Unlink', 'Anchor']},
+#             {'name': 'insert',
+#              'items': ['Image', 'Flash', 'Table', 'HorizontalRule', 'Smiley', 'SpecialChar', 'PageBreak', 'Iframe']},
+#             '/',
+#             {'name': 'styles', 'items': ['Styles', 'Format', 'Font', 'FontSize']},
+#             {'name': 'colors', 'items': ['TextColor', 'BGColor']},
+#             {'name': 'tools', 'items': ['Maximize', 'ShowBlocks']},
+#             {'name': 'about', 'items': ['About']},
+#             '/',  # put this to force next toolbar on new line
+#             {'name': 'yourcustomtools', 'items': [
+#                 # put the name of your editor.ui.addButton here
+#                 'Preview',
+#                 'Maximize',
+#
+#             ]},
+#         ],
+#         'toolbar': 'YourCustomToolbarConfig',  # put selected toolbar config here
+#         # 'toolbarGroups': [{ 'name': 'document', 'groups': [ 'mode', 'document', 'doctools' ] }],
+#         # 'height': 291,
+#         # 'width': '100%',
+#         # 'filebrowserWindowHeight': 725,
+#         # 'filebrowserWindowWidth': 940,
+#         # 'toolbarCanCollapse': True,
+#         # 'mathJaxLib': '//cdn.mathjax.org/mathjax/2.2-latest/MathJax.js?config=TeX-AMS_HTML',
+#         'tabSpaces': 4,
+#         'extraPlugins': ','.join([
+#             'uploadimage',  # the upload image feature
+#             # your extra plugins here
+#             'div',
+#             'autolink',
+#             'autoembed',
+#             'embedsemantic',
+#             'autogrow',
+#             # 'devtools',
+#             'widget',
+#             'lineutils',
+#             'clipboard',
+#             'dialog',
+#             'dialogui',
+#             'elementspath'
+#         ]),
+#     }
+# }

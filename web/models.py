@@ -12,11 +12,11 @@ from django.utils.safestring import mark_safe
 
 # 博客模型
 class Blog(models.Model):
-    title = models.CharField("标题", max_length=30, unique=False)
+    title = models.CharField("标题", max_length=100, unique=False)
     # 博客的内容为 RichTextField 对象
     # body = RichTextField()  # 这个不能上传图片
     contents = RichTextUploadingField("内容")
-    introduction = models.CharField("简介", max_length=60)
+    introduction = models.CharField("简介", max_length=300)
     # time = models.DateTimeField(default=timezone.now)
     add_date = models.DateTimeField('保存日期', default=timezone.now)
     mod_date = models.DateTimeField('最后修改日期', auto_now=True)
@@ -45,16 +45,16 @@ class Blog(models.Model):
         return self.title
 
     class Meta:
-        verbose_name = 'News'
-        verbose_name_plural = 'News'
+        verbose_name = 'COMMUNITY/FAQS'
+        verbose_name_plural = 'COMMUNITY/FAQS'
 
 
 # 基础设置
 class WebSetting(models.Model):
     SettingName = models.CharField(max_length=60, verbose_name="配置名称")
-    title = models.OneToOneField("Text", on_delete=models.CASCADE, verbose_name='网站名称', related_name="title")
-    phone = models.ForeignKey("Text", on_delete=models.CASCADE, verbose_name='电话', related_name="phone")
-    email = models.ForeignKey("Text", on_delete=models.CASCADE, verbose_name='邮箱', related_name="email")
+    title = models.CharField(max_length=60, verbose_name="网站名称")
+    phone = models.CharField(max_length=60,verbose_name='电话')
+    email = models.CharField(max_length=60,verbose_name='邮箱')
     # 博客的内容为 RichTextField 对象
     # body = RichTextField()  # 这个不能上传图片
     # content = RichTextUploadingField()
@@ -62,7 +62,7 @@ class WebSetting(models.Model):
     # time = models.DateTimeField(default=timezone.now)
     # add_date = models.DateTimeField('保存日期', default=timezone.now)
     # mod_date = models.DateTimeField('最后修改日期', auto_now=True)
-    # img = models.ImageField()
+    logo = models.ImageField(help_text="LOGO 分辨率:180*55", upload_to='Image/logo')
     # imgpic_30x30 = ImageSpecField(
     #     # 原图
     #     source='img',
@@ -74,19 +74,19 @@ class WebSetting(models.Model):
     #     options={'quality': 90}
     # )
     # 方式二:
-    logo = ProcessedImageField(
-        upload_to='DF_goods/Image/%Y/%m',
-        processors=[ResizeToFill(180, 55)],
-        format='JPEG',
-        options={'quality': 90},
-        verbose_name="LOGO"
-    )
+    # logo = ProcessedImageField(
+    #     upload_to='DF_goods/Image/%Y/%m',
+    #     processors=[ResizeToFill(180, 55)],
+    #     format='PNG',
+    #     options={'quality': 90},
+    #     verbose_name="LOGO"
+    # )
 
     # 列表显示图片方法,return 返回的是图片的地址
     def admin_sample(self):
-        return mark_safe('<img src="/media/%s" height="50" width="50" />' % self.logo)
+        return mark_safe('<img src="/media/%s" height="55" width="150" />' % self.logo)
 
-    admin_sample.short_description = 'Sample'
+    admin_sample.short_description = 'Logo'
     admin_sample.allow_tags = True
 
     #
@@ -94,8 +94,8 @@ class WebSetting(models.Model):
         return self.SettingName
 
     class Meta:
-        verbose_name = '网站设置'
-        verbose_name_plural = '网站设置'
+        verbose_name = 'Settings'
+        verbose_name_plural = 'Settings'
 
 
 # 轮播图
@@ -123,13 +123,13 @@ class Image_list(models.Model):
 
 # 首页
 class IndexPage(models.Model):
-    title = models.CharField("标题", max_length=30)
+    title = models.CharField("标题", max_length=100)
     # 博客的内容为 RichTextField 对象
     # body = RichTextField()  # 这个不能上传图片
-    contents = models.CharField("内容", max_length=30)
+    contents = models.CharField("内容", max_length=200)
     # 方式二:
     img = ProcessedImageField(
-        upload_to='DF_goods/Image/%Y/%m',
+        upload_to='Image/index',
         processors=[ResizeToFill(1920, 750)],
         format='JPEG',
         options={'quality': 90},
@@ -148,7 +148,7 @@ class ContactPage(models.Model):
     title = models.CharField("标题", max_length=30)
     # 方式二:
     img = ProcessedImageField(
-        upload_to='DF_goods/Image/%Y/%m',
+        upload_to='Image/contact',
         processors=[ResizeToFill(600, 450)],
         format='JPEG',
         options={'quality': 90},
@@ -171,21 +171,21 @@ class AboutPage(models.Model):
     contents = RichTextUploadingField("内容")
     # 方式二:
     img1 = ProcessedImageField(
-        upload_to='DF_goods/Image/%Y/%m',
+        upload_to='Image/about',
         processors=[ResizeToFill(960, 640)],
         format='JPEG',
         options={'quality': 90},
         verbose_name="图片1"
     )
     img2 = ProcessedImageField(
-        upload_to='DF_goods/Image/%Y/%m',
+        upload_to='Image/about',
         processors=[ResizeToFill(960, 640)],
         format='JPEG',
         options={'quality': 90},
         verbose_name="图片2"
     )
     img3 = ProcessedImageField(
-        upload_to='DF_goods/Image/%Y/%m',
+        upload_to='Image/about',
         processors=[ResizeToFill(960, 720)],
         format='JPEG',
         options={'quality': 90},
@@ -209,7 +209,7 @@ class TechnologyPage(models.Model):
     contents1 = RichTextUploadingField("内容1")
     # 方式二:
     img1 = ProcessedImageField(
-        upload_to='DF_goods/Image/%Y/%m',
+        upload_to='Image/technology',
         processors=[ResizeToFill(1440, 375)],
         format='JPEG',
         options={'quality': 90},
@@ -217,21 +217,21 @@ class TechnologyPage(models.Model):
     )
     contents2 = RichTextUploadingField("内容2")
     img2 = ProcessedImageField(
-        upload_to='DF_goods/Image/%Y/%m',
+        upload_to='Image/technology',
         processors=[ResizeToFill(600, 300)],
         format='JPEG',
         options={'quality': 90},
         verbose_name="图片2"
     )
     img3 = ProcessedImageField(
-        upload_to='DF_goods/Image/%Y/%m',
+        upload_to='Image/technology',
         processors=[ResizeToFill(500, 350)],
         format='JPEG',
         options={'quality': 90},
         verbose_name="图片3"
     )
     img4 = ProcessedImageField(
-        upload_to='DF_goods/Image/%Y/%m',
+        upload_to='Image/technology',
         processors=[ResizeToFill(500, 350)],
         format='JPEG',
         options={'quality': 90},
@@ -253,28 +253,28 @@ class ProductsPage(models.Model):
     # body = RichTextField()  # 这个不能上传图片
     # 方式二:
     img1 = ProcessedImageField(
-        upload_to='DF_goods/Image/%Y/%m',
+        upload_to='Image/product',
         processors=[ResizeToFill(550, 350)],
         format='JPEG',
         options={'quality': 90},
         verbose_name="图片1"
     )
     img2 = ProcessedImageField(
-        upload_to='DF_goods/Image/%Y/%m',
+        upload_to='Image/product',
         processors=[ResizeToFill(550, 350)],
         format='JPEG',
         options={'quality': 90},
         verbose_name="图片2"
     )
     img3 = ProcessedImageField(
-        upload_to='DF_goods/Image/%Y/%m',
+        upload_to='Image/product',
         processors=[ResizeToFill(550, 350)],
         format='JPEG',
         options={'quality': 90},
         verbose_name="图片3"
     )
     img4 = ProcessedImageField(
-        upload_to='DF_goods/Image/%Y/%m',
+        upload_to='Image/product',
         processors=[ResizeToFill(550, 350)],
         format='JPEG',
         options={'quality': 90},
@@ -285,28 +285,28 @@ class ProductsPage(models.Model):
     # body = RichTextField()  # 这个不能上传图片
     # 方式二:
     img5 = ProcessedImageField(
-        upload_to='DF_goods/Image/%Y/%m',
+        upload_to='Image/product',
         processors=[ResizeToFill(550, 350)],
         format='JPEG',
         options={'quality': 90},
         verbose_name="图片1"
     )
     img6 = ProcessedImageField(
-        upload_to='DF_goods/Image/%Y/%m',
+        upload_to='Image/product',
         processors=[ResizeToFill(550, 350)],
         format='JPEG',
         options={'quality': 90},
         verbose_name="图片2"
     )
     img7 = ProcessedImageField(
-        upload_to='DF_goods/Image/%Y/%m',
+        upload_to='Image/product',
         processors=[ResizeToFill(550, 350)],
         format='JPEG',
         options={'quality': 90},
         verbose_name="图片3"
     )
     img8 = ProcessedImageField(
-        upload_to='DF_goods/Image/%Y/%m',
+        upload_to='Image/product',
         processors=[ResizeToFill(550, 350)],
         format='JPEG',
         options={'quality': 90},

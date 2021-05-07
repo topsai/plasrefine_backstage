@@ -7,7 +7,7 @@ from .models import Blog, WebSetting, Image_list, Text, Image, RichText, IndexPa
 
 # 注册该模型
 @admin.register(Blog)
-class BlogAdmin(admin.ModelAdmin):
+class NewsAdmin(admin.ModelAdmin):
     # 列表页面显示字段
     list_display = ['title', 'add_date', 'mod_date']
 
@@ -58,22 +58,22 @@ class TextAdmin(admin.ModelAdmin):
     pass
 
 
-@admin.register(RichText)
-class RichTextAdmin(admin.ModelAdmin):
-    # 列表页面显示字段
-    # list_display = ['title', 'logo']
-    pass
+# @admin.register(RichText)
+# class RichTextAdmin(admin.ModelAdmin):
+#     # 列表页面显示字段
+#     # list_display = ['title', 'logo']
+#     pass
 
 
-@admin.register(Image_list)
-class SettingAdmin(admin.ModelAdmin):
-    # 列表页面显示字段
-    list_display = ['title', 'contents', 'img']
-    pass
+# @admin.register(Image_list)
+# class SettingAdmin(admin.ModelAdmin):
+#     # 列表页面显示字段
+#     list_display = ['title', 'contents', 'img']
+#     pass
 
 
-@admin.register(Image)
-class ImageAdmin(admin.ModelAdmin):
-    # 列表页面显示字段
-    # list_display = ['title', 'contents', 'img']
-    pass
+# @admin.register(Image)
+# class ImageAdmin(admin.ModelAdmin):
+#     # 列表页面显示字段
+#     # list_display = ['title', 'contents', 'img']
+#     pass
