@@ -15,7 +15,8 @@ class Blog(models.Model):
     title = models.CharField("标题", max_length=100, unique=False)
     # 博客的内容为 RichTextField 对象
     # body = RichTextField()  # 这个不能上传图片
-    contents = RichTextUploadingField("内容")
+    # contents = RichTextUploadingField("内容")
+    files = models.FileField(upload_to="File")
     introduction = models.CharField("简介", max_length=300)
     # time = models.DateTimeField(default=timezone.now)
     add_date = models.DateTimeField('保存日期', default=timezone.now)

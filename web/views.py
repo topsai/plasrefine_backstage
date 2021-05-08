@@ -59,5 +59,7 @@ def news_detail(request, blog_id=None):
     data = None
     if blog_id:
         data = Blog.objects.filter(id=blog_id).first()
-        print(data)
-    return render(request, 'detail.html', {"blog": data})
+        print("-->", data.files.url)
+    else:
+        print('none')
+    return render(request, 'viewer.html', {"data": data})
